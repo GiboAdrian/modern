@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,7 +22,7 @@ Route::get('/proyectos', [App\Http\Controllers\HomeController::class, 'proyectos
 Route::get('/proyectos/{category}', [App\Http\Controllers\HomeController::class, 'proyectByCategory'])->name('proyectos.category');
 Route::get('/proyecto/{postId}', [App\Http\Controllers\HomeController::class, 'proyecto'])->name('proyecto');
 
-Route::get('/panel', function(){
+Route::get('/panel', function () {
     return view('panel');
 })->middleware('auth');
 
@@ -39,4 +40,6 @@ Route::delete('/admin/posts/{postId}/delete', [App\Http\Controllers\Admin\PostsC
 
 Auth::routes();
 
-
+Route::get('new', function () {
+    return view('welcome');
+});
