@@ -252,6 +252,12 @@ return [
             'url'  => 'admin/posts',
             'icon' => 'fas fa-fw fa-building',
         ],
+        ['header' => 'Notificaciones'],
+        [
+            'text' => 'Mensajes',
+            'url'  => 'admin/messages',
+            'icon' => 'fas fa-fw fa-envelope',
+        ],
         // [
         //     'text'    => 'multilevel',
         //     'icon'    => 'fas fa-fw fa-share',

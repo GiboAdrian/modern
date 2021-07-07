@@ -15,12 +15,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/nosotros', [App\Http\Controllers\HomeController::class, 'nosotros'])->name('nosotros');
-Route::get('/contacto', [App\Http\Controllers\HomeController::class, 'contacto'])->name('contacto');
-Route::get('/servicios', [App\Http\Controllers\HomeController::class, 'servicios'])->name('servicios');
-Route::get('/proyectos', [App\Http\Controllers\HomeController::class, 'proyectos'])->name('proyectos');
 Route::get('/proyectos/{category}', [App\Http\Controllers\HomeController::class, 'proyectByCategory'])->name('proyectos.category');
 Route::get('/proyecto/{postId}', [App\Http\Controllers\HomeController::class, 'proyecto'])->name('proyecto');
+Route::post('/message', [App\Http\Controllers\HomeController::class, 'contact'])->name('user.message');
 
 Route::get('/panel', function () {
     return view('panel');
@@ -38,6 +35,9 @@ Route::post('/admin/posts/store', [App\Http\Controllers\Admin\PostsController::c
 Route::post('/admin/posts/{postId}/update', [App\Http\Controllers\Admin\PostsController::class, 'update'])->name('admin.posts.update');
 Route::delete('/admin/posts/{postId}/delete', [App\Http\Controllers\Admin\PostsController::class, 'delete'])->name('admin.posts.delete');
 
+//Rutas de mensajes del administrador
+Route::get('/admin/messages', [App\Http\Controllers\Admin\MessagesController::class, 'index'])->name('admin.messages.index');
+Route::delete('/admin/messages/{messageId}/delete', [App\Http\Controllers\Admin\MessagesController::class, 'delete'])->name('admin.message.delete');
 Auth::routes();
 
 Route::get('new', function () {

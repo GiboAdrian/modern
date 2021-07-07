@@ -57,3 +57,32 @@ window.addEventListener('DOMContentLoaded', event => {
     });
 
 });
+
+window.onload = function() {        
+    var divArt = document.getElementsByName('artesania');
+    divArt[0].style.display="none";            
+}      
+function showModernArt(){
+    var divArt = document.getElementsByName('artesania');
+    var divMod = document.getElementsByName('modernart');
+    var secServ = document.getElementById('services');
+    secServ.style.background = "linear-gradient(to bottom, rgba(128, 112, 102, 0.596) 0%, rgba(92, 77, 66, 0.8) 100%), url('../assets/img/modernart.gif')";
+    secServ.style.backgroundPosition = "center";
+    secServ.style.backgroundRepeat = "no-repeat";
+    secServ.style.backgroundAttachment = "scroll";
+    secServ.style.backgroundSize = "cover";
+    divArt[0].style.display="none";   
+    divMod[0].style.display="block";     
+}
+function showArtesania(){
+    var divArt = document.getElementsByName('artesania');
+    var divMod = document.getElementsByName('modernart');
+    var secServ = document.getElementById('services');
+    secServ.style.background = "linear-gradient(rgb(0 255 220 / 20%) 0%, rgb(255 0 247 / 47%) 100%), url('../assets/img/artesania2.gif')";
+    secServ.style.backgroundPosition = "center";
+    secServ.style.backgroundRepeat = "no-repeat";
+    secServ.style.backgroundAttachment = "scroll";
+    secServ.style.backgroundSize = "cover";
+    divArt[0].style.display="block";   
+    divMod[0].style.display="none"; 
+}

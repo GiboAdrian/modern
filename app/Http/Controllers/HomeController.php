@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Models\Category;
 use App\Models\Models\Post;
+use App\Models\Models\Message;
 
 class HomeController extends Controller
 {
@@ -25,22 +26,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
-    }
-
-    public function nosotros()
-    {
-        return view('nosotros');
-    }
-
-    public function contacto()
-    {
-        return view('contacto');
-    }
-
-    public function servicios()
-    {
-        return view('servicios');
+        $categories = Category::all();
+        $posts = Post::all();
+        
+        return view('welcome', [
+            'categories'=>$categories,
+            'posts'=>$posts
+        ]);
     }
 
     public function proyectos()
@@ -75,5 +67,20 @@ class HomeController extends Controller
             'posts'=>$posts,
             'categoryIdSelected'=>$categoryIdSelected
         ]);
+    }
+
+    public function contact(Request $request)
+    {
+
+        $newMessage = new Message();
+
+        $newMessage->client = $request->name;
+        $newMessage->mail = $request->email;
+        $newMessage->phone = $request->phone;
+        $newMessage->message = $request->message;
+
+        $newMessage->save();
+
+        return redirect()->back();
     }
 }
